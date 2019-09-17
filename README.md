@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/191027036.svg)](https://zenodo.org/badge/latestdoi/191027036)
+[![DOI](https://zenodo.org/badge/208951153.svg)](https://zenodo.org/badge/latestdoi/208951153)
 
 # Regex Generalizability
 
