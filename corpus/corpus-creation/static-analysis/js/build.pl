@@ -3,4 +3,4 @@
 use strict;
 use warnings;
 
-`npm install`;
+print `npm install`;
