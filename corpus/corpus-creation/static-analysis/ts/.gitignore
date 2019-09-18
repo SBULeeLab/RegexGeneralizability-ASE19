@@ -1,1 +1,3 @@
 transpile-ts2js-tsc.js
+node_modules
+package-lock.json
