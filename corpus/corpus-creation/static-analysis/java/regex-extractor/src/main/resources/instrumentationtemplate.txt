@@ -1,0 +1,51 @@
+(new Object() {
+  String instrument(String pattern) {
+    /* NB The file I/O portion is probably not thread-safe. */
+    try {
+      /* Poor man's JSON. */
+      /* 1. Convert non-printable ASCII like \n to escaped ASCII like \\n. */
+      /* 2. Convert Unicode to "\\uXXXX" */
+      StringBuilder jsonAsciiPatternSB = new StringBuilder();
+      for (int i = 0; i < pattern.length(); i++) {
+        char c = pattern.charAt(i);
+        int c_int = (int) c;
+        String piece;
+        if (c_int < 128) {
+          /* ASCII, but handle (common) chars that are \-escaped in JSON. Let's hope this suffices. */
+          /* The weird chars run from 0-31 and then 127; 32-126 are printable. */
+          switch (c_int) {
+          /* Handle single ASCII characters that get replaced by two distinct ASCII chars -- replace with backslash-encoded, then escape the backslash. */
+          case 8:  piece = "\\\\" + "b"; break;
+          case 9:  piece = "\\\\" + "t"; break;
+          case 10: piece = "\\\\" + "n"; break;
+          case 11: piece = "\\\\" + "v"; break;
+          case 12: piece = "\\\\" + "f"; break;
+          case 13: piece = "\\\\" + "r"; break;
+          /* Escape any double-quotes */
+          case 34: piece = "\\" + "\""; break;
+          /* Escape any extant backslashes */
+          case 92: piece = "\\" + "\\"; break;
+          default: piece = String.valueOf(c); break;
+          }
+        } else {
+          /* Non-ASCII. Convert to Unicode equivalent. */
+          piece = String.format("\\u%04x", c_int);
+        }
+
+        jsonAsciiPatternSB.append(piece);
+      }
+
+      /* Still needs to be wrapped in double quotes. */
+      String jsonAsciiPattern = jsonAsciiPatternSB.toString();
+
+      String json = "{\"file\":\"" + "SOURCEF" +
+        "\",\"pattern\":\"" + jsonAsciiPattern +
+        "\",\"flags\":\"UNKNOWN\"}";
+
+      java.io.PrintWriter out = new java.io.PrintWriter(new java.io.FileWriter("OUTPUT_FILE", true));
+      out.println(json);
+      out.close();
+    } catch (Exception e) {}
+    return pattern;
+  }
+}).instrument("REGEXP")
