@@ -1,0 +1,1 @@
+../../static-analysis/js/instrument-regexps.js

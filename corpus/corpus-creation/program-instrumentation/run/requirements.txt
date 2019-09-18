@@ -1,0 +1,4 @@
+nox
+tox
+pytest
+nose
