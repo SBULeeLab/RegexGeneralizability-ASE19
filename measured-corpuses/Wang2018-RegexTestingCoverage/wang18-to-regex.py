@@ -5,7 +5,7 @@
 import os
 import sys
 import re
-sys.path.append(os.path.join(os.environ['ECOSYSTEM_REGEXP_PROJECT_ROOT'], 'lib'))
+sys.path.append(os.path.join(os.environ['REGEX_GENERALIZABILITY_PROJECT_ROOT'], 'lib'))
 import libLF
 
 import json
