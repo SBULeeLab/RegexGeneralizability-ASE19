@@ -18,7 +18,8 @@ chkcmd("mv $artifactName $dest");
 
 print "Configuring the artifact\n  (This may prompt for sudo to install dependencies)\n";
 fixDetectors($dest);
-chkcmd("cd $dest; ./configure");
+runcmd("cd $dest; ./configure");
+print "If the preceding successfully configured the detectors, we're good to go. It might fail building other components, but NBD.\n";
 
 sub chkcmd {
   my ($cmd) = @_;
@@ -41,16 +42,16 @@ sub fixDetectors {
 
   my $detector2paths = {
     "weideman" => {
-      "dest": "weideman-RegexStaticAnalysis",
-      "artifact": "weideman-ASE19-artifact.tar.gz",
-      "untarDir": "RegexStaticAnalysis-ASE19-artifact",
+      "dest" => "weideman-RegexStaticAnalysis",
+      "artifact" => "weideman-ASE19-artifact.tar.gz",
+      "untarDir" => "RegexStaticAnalysis-ASE19-artifact",
     },
     "shen" => {
-      "path": "shen-ReScue",
-      "artifact": "shen-ASE19-artifact.tar.gz",
-      "untarDir": "ReScue-ASE19-artifact",
+      "dest" => "shen-ReScue",
+      "artifact" => "shen-ASE19-artifact.tar.gz",
+      "untarDir" => "ReScue-ASE19-artifact",
     }
-  }
+  };
 
   for my $detector (keys %$detector2paths) {
     print "Fixing up $detector\n";
@@ -58,4 +59,7 @@ sub fixDetectors {
     chkcmd("cp $detector2paths->{$detector}->{artifact} $detectorSrc");
     chkcmd("cd $detectorSrc; tar -xzvf $detector2paths->{$detector}->{artifact}; mv $detector2paths->{$detector}->{untarDir} $detector2paths->{$detector}->{dest}");
   }
+
+  # Fix up submodule deps from weideman
+  chkcmd("cd $detectorSrc/$detector2paths->{weideman}->{dest}; rm -rf jgrapht; git clone https://github.com/jgrapht/jgrapht.git jgrapht; cd jgrapht; git checkout c3adaefd5721b65b066ce4941ac09599eaf23dbd");
 }
