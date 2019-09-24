@@ -10,11 +10,11 @@ use IPC::Cmd qw[can_run]; # Check PATH
 use JSON::PP; # I/O
 
 # Check dependencies.
-if (not defined $ENV{ECOSYSTEM_REGEXP_PROJECT_ROOT}) {
-  die "Error, ECOSYSTEM_REGEXP_PROJECT_ROOT must be defined\n";
+if (not defined $ENV{REGEX_GENERALIZABILITY_PROJECT_ROOT}) {
+  die "Error, REGEX_GENERALIZABILITY_PROJECT_ROOT must be defined\n";
 }
 
-my $extractRegexps = "$ENV{ECOSYSTEM_REGEXP_PROJECT_ROOT}/ecosystems/per-module/extract-regexps/static/python/instrument-regexps.py";
+my $extractRegexps = "$ENV{REGEX_GENERALIZABILITY_PROJECT_ROOT}/ecosystems/per-module/extract-regexps/static/python/instrument-regexps.py";
 if (not -f $extractRegexps) {
   die "Error, could not find: $extractRegexps>\n";
 }

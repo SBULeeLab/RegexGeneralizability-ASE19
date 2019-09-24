@@ -11,7 +11,7 @@
  *
  * Requirements:
  *   - run npm install
- *   - ECOSYSTEM_REGEXP_PROJECT_ROOT must be defined
+ *   - REGEX_GENERALIZABILITY_PROJECT_ROOT must be defined
  *
  * Arguments:
  *   source-to-instrument.js - input source file

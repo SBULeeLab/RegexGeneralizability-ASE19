@@ -12,7 +12,7 @@
  *
  * Requirements:
  *   - run npm install
- *   - ECOSYSTEM_REGEXP_PROJECT_ROOT must be defined
+ *   - REGEX_GENERALIZABILITY_PROJECT_ROOT must be defined
  */
 
 "use strict";
@@ -28,8 +28,8 @@ if (process.argv.length != 3) {
 }
 
 // Check for dependencies
-if (!process.env.ECOSYSTEM_REGEXP_PROJECT_ROOT) {
-  console.log('Error, must define env var ECOSYSTEM_REGEXP_PROJECT_ROOT');
+if (!process.env.REGEX_GENERALIZABILITY_PROJECT_ROOT) {
+  console.log('Error, must define env var REGEX_GENERALIZABILITY_PROJECT_ROOT');
   process.exit(1);
 }
 

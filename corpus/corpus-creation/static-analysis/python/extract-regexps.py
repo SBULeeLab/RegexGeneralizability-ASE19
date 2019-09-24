@@ -22,7 +22,7 @@
 #     and then calls the imported methods directly.
 #
 # Dependencies:
-#   Must define ECOSYSTEM_REGEXP_PROJECT_ROOT
+#   Must define REGEX_GENERALIZABILITY_PROJECT_ROOT
 #   cloc must be defined in PATH
 #
 # Output:
@@ -303,8 +303,8 @@ def main():
     sys.exit(1)
 
   # Check for dependencies
-  if (not os.environ.get('ECOSYSTEM_REGEXP_PROJECT_ROOT')):
-    log('Error, must define env var ECOSYSTEM_REGEXP_PROJECT_ROOT')
+  if (not os.environ.get('REGEX_GENERALIZABILITY_PROJECT_ROOT')):
+    log('Error, must define env var REGEX_GENERALIZABILITY_PROJECT_ROOT')
     sys.exit(1)
 
   try:
