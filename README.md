@@ -25,8 +25,8 @@ In addition to this directory's `README.md`, each sub-tree comes with one or mor
 ## Dependencies
 
 Export the following environment variables to ensure the tools know how to find each other.
-- `REGEX_GENERALIZABILITY_PROJECT_ROOT`
-- `VULN_REGEX_DETECTOR_ROOT` (dependency, set it to `REGEX_GENERALIZABILITY_PROJECT_ROOT/analysis/performance/vuln-regex-detector`)
+- `REGEX_GENERALIZABILITY_PROJECT_ROOT` (set to wherever you cloned this repo)
+- `VULN_REGEX_DETECTOR_ROOT` (dependency, set it to `REGEX_GENERALIZABILITY_PROJECT_ROOT/measurement-instruments/worst-case-performance/performance/vuln-regex-detector`)
 
 See `.env` for examples.
 
