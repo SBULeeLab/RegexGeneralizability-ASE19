@@ -5,7 +5,7 @@
 import os
 import sys
 import re
-sys.path.append('{}/lib'.format(os.environ['ECOSYSTEM_REGEXP_PROJECT_ROOT']))
+sys.path.append('{}/lib'.format(os.environ['REGEX_GENERALIZABILITY_PROJECT_ROOT']))
 import libLF
 import argparse
 import subprocess
