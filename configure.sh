@@ -104,4 +104,23 @@ pushd measurement-instruments/
   popd
 popd
 
+#####
+# regex corpuses
+
+echo "Unpacking regex corpuses"
+
+pushd measured-corpuses/
+  pushd Wang2018-RegexTestingCoverage/
+  ./unpack.pl
+  popd
+
+  pushd Davis2019-LinguaFranca-ManyLanguageCorpus/
+  ./unpack.pl
+  popd
+
+  pushd Davis2019-RegexGeneralizability-MultiMethodCorpus/
+  ./unpack.pl
+  popd
+popd
+
 echo "Configuration complete. I hope everything works!"
