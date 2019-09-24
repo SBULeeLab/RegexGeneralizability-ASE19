@@ -31,7 +31,7 @@ pushd corpus/corpus-creation/
 
   echo "  Tools for extraction via program instrumentation"
   pushd program-instrumentation
-		pushd python
+		pushd run/
 		./build.pl
 		popd
 	popd
