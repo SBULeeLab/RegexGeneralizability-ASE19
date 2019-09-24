@@ -109,6 +109,12 @@ popd
 
 echo "Unpacking regex corpuses"
 
+pushd corpus/
+  pushd Davis2019-RegexGeneralizability-MultiMethodCorpus/
+  ./unpack.pl
+  popd
+popd
+
 pushd measured-corpuses/
   pushd Wang2018-RegexTestingCoverage/
   ./unpack.pl
